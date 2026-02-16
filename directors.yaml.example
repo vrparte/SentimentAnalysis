@@ -1,0 +1,21 @@
+directors:
+  - full_name: "John Doe"
+    aliases: ["J. Doe", "John D."]
+    context_terms: ["ABC Corp", "independent director", "Mumbai"]
+    negative_terms: ["actor", "footballer"]
+    known_entities: ["XYZ Ltd", "Board Member"]
+    provider_gdelt_enabled: true
+    provider_bing_enabled: true
+    provider_serpapi_enabled: false
+    provider_rss_enabled: false
+    is_active: true
+
+  - full_name: "Jane Smith"
+    aliases: ["J. Smith"]
+    context_terms: ["DEF Industries", "board of directors", "Delhi"]
+    negative_terms: []
+    known_entities: []
+    provider_gdelt_enabled: true
+    provider_bing_enabled: true
+    is_active: true
+
