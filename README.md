@@ -1,4 +1,4 @@
-# Director Media Monitoring System
+# Director Sentiment Analysis System
 
 A production-grade system for monitoring public online sources for mentions of independent directors, detecting good or bad news, and generating readable reports for Managing Directors.
 
