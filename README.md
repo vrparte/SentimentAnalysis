@@ -37,7 +37,7 @@ A production-grade system for monitoring public online sources for mentions of i
 
 1. **Clone and navigate to the project:**
    ```bash
-   cd director-media-monitoring
+   cd director-sentiment-analysis
    ```
 
 2. **Create `.env` file from example:**
@@ -196,62 +196,13 @@ director-media-monitoring/
 - Weekly cleanup task removes old data
 - Reports are stored indefinitely (configurable)
 
-## Development
-
-### Local Development (without Docker)
-
-1. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Set up PostgreSQL and Redis:**
-   - PostgreSQL on localhost:5432
-   - Redis on localhost:6379
-
-3. **Run migrations:**
-   ```bash
-   alembic upgrade head
-   ```
-
-4. **Start services:**
-   ```bash
-   # Terminal 1: API
-   uvicorn app.api.main:app --reload
-
-   # Terminal 2: Celery worker
-   celery -A app.worker.celery_app worker --loglevel=info
-
-   # Terminal 3: Celery beat
-   celery -A app.worker.celery_app beat --loglevel=info
-   ```
-
-### Running Tests
-
-```bash
-pytest tests/
-```
-
-### Code Quality
-
-```bash
-# Linting
-ruff check .
-
-# Type checking
-mypy app/
-
-# Formatting
-ruff format .
-```
-
 ## Deployment
 
 ### Production Deployment
 
 1. **Set production environment variables**
 2. **Use production-grade secrets management**
-3. **Configure S3-compatible storage** (if not using local storage)
+3. **Configure S3-compatible storage** 
 4. **Set up monitoring** (Sentry, logs aggregation)
 5. **Configure reverse proxy** (nginx) for API
 6. **Set up SSL certificates**
@@ -262,40 +213,4 @@ ruff format .
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
-## Troubleshooting
-
-### Jobs not running
-
-- Check Celery Beat logs: `docker compose logs beat`
-- Verify Redis connection
-- Check timezone configuration
-
-### Provider failures
-
-- Check API keys in `.env`
-- Review provider rate limits
-- Check network connectivity
-
-### Low confidence scores
-
-- Add more context terms for directors
-- Review negative terms
-- Check article extraction quality
-
-### Email not sending
-
-- Verify SMTP configuration
-- Check logs for SMTP errors
-- Test SMTP connection manually
-
-## Support
-
-For issues and questions, please check:
-- Logs: `docker compose logs`
-- Database: Check `articles`, `mentions`, `reports` tables
-- Review queue: Check for low-confidence items
-
-## License
-
-Proprietary - Internal Use Only
 
