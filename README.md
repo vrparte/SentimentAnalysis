@@ -151,17 +151,6 @@ curl -X POST http://localhost:8000/api/admin/trigger-scan \
    GET /api/reports/{report_id}/pdf
    ```
 
-### Review Queue
-
-Low-confidence items are flagged for review:
-
-1. Login as admin
-2. Navigate to "Review Queue"
-3. Review items and:
-   - Confirm association (mark as valid)
-   - Deny association (mark as false positive)
-   - Adjust classification
-
 ## Architecture
 
 ```
